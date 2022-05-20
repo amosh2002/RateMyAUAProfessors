@@ -17,6 +17,7 @@ export default makeStyles(() => ({
         margin: '10px 0',
     },
     buttonSubmit: {
+        color: 'green',
         marginBottom: 10,
     },
 }));
