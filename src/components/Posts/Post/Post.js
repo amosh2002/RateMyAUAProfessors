@@ -1,16 +1,35 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import {Card, CardActions, CardContent, Button, CardMedia, Typography} from '@mui/material'
+import {useSelector} from "react-redux";
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit'
 
-import useStyles from "./styles";
+import useStyles from '../Post/styles';
 
-const Post = () => {
-    const posts = useSelector((state) => state.posts)
+const Post = ({post}) => {
     const classes = useStyles();
 
-    console.log(posts);
-
     return (
-        <h1>Mgo Nazaryan</h1>
+        <Card className={classes.card} image={post.imageFile} title={post.fullName}>
+            <div className={classes.overlay}>
+                <Typography variant="h8">{post.fullName}</Typography>
+                <Typography variant="h10">{post.rating}</Typography>
+            </div>
+            <div className={classes.overlay2}>
+                <Button style={{color: 'white'}} size="small" onClick={() => {
+                }}>
+                    <EditIcon/>
+                </Button>
+            </div>
+            <CardActions className={classes.cardActions}>
+                <Button size="small" color="primary" onClick={() => {
+                }}>
+                    {post.countOfRatings}
+                </Button>
+                {DeleteIcon}
+            </CardActions>
+
+        </Card>
     )
 }
 
