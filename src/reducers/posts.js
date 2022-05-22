@@ -1,11 +1,11 @@
 export default (posts = [], action) => {
     if (action.type === 'CREATE') {
         return [...posts, action.payload];
-    }
-    else if (action.type === 'FETCH_ALL') {
+    } else if (action.type === 'FETCH_ALL') {
         return action.payload;
-    }
-    else {
+    } else if (action.type === 'UPDATE') {
+        return posts.map((posts) => posts._id === action.payload._id ? action.payload : posts);
+    } else {
         return posts;
     }
 }

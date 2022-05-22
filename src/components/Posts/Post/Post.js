@@ -44,8 +44,8 @@ const Post = ({post, setCurrentId}) => {
                 </div>
             </div>
             <CardActions className={styles.cardActions}>
-                <Button size="small" color="primary" onClick={() => {
-                }}>
+                <Button size="small" color="primary" onClick={() => setCurrentId(post._id)
+                }>
                     Edit
                 </Button>
                 <Button size="small" color="secondary" onClick={() => {
