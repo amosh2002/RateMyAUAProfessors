@@ -4,29 +4,14 @@ import {Card, CardActions, CardContent, Button, CardMedia, Typography} from '@mu
 //import EditIcon from '@mui/icons-material/Edit'
 import CourseList from "./CourseContainers/CourseList";
 import useStyles from '../Post/styles';
+import {useDispatch} from "react-redux";
+import {deleteProfessor, rateProfessor} from "../../../actions/posts";
 
 const Post = ({post, setCurrentId}) => {
     const styles = useStyles();
+    const dispatch = useDispatch();
 
     return (
-        // <div>
-        //     <p>{post.fullName}</p>
-        //     <p>{post.rating}</p>
-        //     <p>{post.countOfRatings}</p>
-        //     <img className={classes.media} src={post.imageFile} alt="photo"/>
-        //     <CardActions className={classes.cardActions}>
-        //         <Button size="small" color="primary" onClick={() => {
-        //         }}>
-        //             Edit
-        //         </Button>
-        //         <Button size="small" color="secondary" onClick={() => {
-        //         }}>
-        //             Delete
-        //         </Button>
-        //
-        //     </CardActions>
-        // </div>
-
         <li className={styles.parentLi}>
             <div>
                 <img src={post.imageFile} alt="Image Not Found" className={styles.img}/>
@@ -44,19 +29,35 @@ const Post = ({post, setCurrentId}) => {
                 </div>
             </div>
             <CardActions className={styles.cardActions}>
-                <Button size="small" color="primary" onClick={() => setCurrentId(post._id)
-                }>
+                <Button size="small" color="primary" onClick={() => dispatch(rateProfessor(post._id))}>
+                    Rate
+                </Button>
+                <Button size="small" color="primary" onClick={() => setCurrentId(post._id)}>
                     Edit
                 </Button>
-                <Button size="small" color="secondary" onClick={() => {
-                }}>
+                <Button size="small" color="secondary" onClick={() => dispatch(deleteProfessor(post._id))}>
                     Delete
                 </Button>
-
             </CardActions>
-
         </li>
 
+        // <div>
+        //     <p>{post.fullName}</p>
+        //     <p>{post.rating}</p>
+        //     <p>{post.countOfRatings}</p>
+        //     <img className={classes.media} src={post.imageFile} alt="photo"/>
+        //     <CardActions className={classes.cardActions}>
+        //         <Button size="small" color="primary" onClick={() => {
+        //         }}>
+        //             Edit
+        //         </Button>
+        //         <Button size="small" color="secondary" onClick={() => {
+        //         }}>
+        //             Delete
+        //         </Button>
+        //
+        //     </CardActions>
+        // </div>
     )
 
     function defineColor(rating) {

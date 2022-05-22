@@ -29,6 +29,15 @@ export const updateProfessor = (id, professor) => async (dispatch) => {
     }
 }
 
+export const rateProfessor = (id) => async (dispatch) => {
+    try {
+        const {data} = await api.rateProfessor(id);
+        dispatch({type: 'RATE', payload: data})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 export const deleteProfessor = (id) => async (dispatch) => {
     try {
         await api.deleteProfessor(id);
