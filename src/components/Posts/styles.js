@@ -1,14 +1,9 @@
 import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
-    mainContainer: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    smMargin: {
-        margin: 2,
-    },
-    actionDiv: {
-        textAlign: 'center',
-    },
+    ul: {
+        listStyle: 'none',
+        margin: 0,
+        padding: 0
+    }
 }));

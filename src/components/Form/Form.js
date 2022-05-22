@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 import useStyles from "./styles";
 import FileBase64 from 'react-file-base64';
-import { useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
 
-import { TextField, Button, Typography, Paper } from "@mui/material";
-import { createProfessor } from "../../actions/posts";
+import {Button, Paper, TextField, Typography} from "@mui/material";
+import {createProfessor} from "../../actions/posts";
 
 
-const Form = () => {
+const Form = ({currentId, setCurrentId}) => {
     const [profesorData, setProfesorData] = useState({
-        //todo: add array and selecting support for courses
         fullName: '', courses: '', imageFile: ''
     });
     const classes = useStyles();
@@ -35,7 +34,7 @@ const Form = () => {
                         label="Full Name"
                         fullWidth
                         value={profesorData.fullName}
-                        onChange={(e) => setProfesorData({ ...profesorData, fullName: e.target.value })}
+                        onChange={(e) => setProfesorData({...profesorData, fullName: e.target.value})}
                     />
                     <TextField
                         name="courses"
@@ -43,13 +42,13 @@ const Form = () => {
                         label="Courses"
                         fullWidth
                         value={profesorData.courses}
-                        onChange={(e) => setProfesorData({ ...profesorData, courses: e.target.value })}
+                        onChange={(e) => setProfesorData({...profesorData, courses: e.target.value})}
                     />
                     <div className={classes.fileInput}>
                         <FileBase64
                             type='file'
                             multiple={false}
-                            onDone={({ base64 }) => setProfesorData({ ...profesorData, imageFile: base64 })}
+                            onDone={({base64}) => setProfesorData({...profesorData, imageFile: base64})}
                         />
                     </div>
                     <Button className={classes.buttonSubmit} variant="container" size="large" type="submit" fullWidth>
@@ -57,7 +56,7 @@ const Form = () => {
                     </Button>
 
                     <Button variant="contained" color="secondary" size="small" onClick={clearAll}>
-                        CLear all fields
+                        Clear all fields
                     </Button>
 
                 </form>
